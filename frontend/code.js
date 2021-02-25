@@ -5,7 +5,7 @@ const apiEndpoint = 'http://localhost/asyncdemo/backend/server.php';
 // ------------------------------------------------------------------
 // Logging
 
-const logBox = document.getElementById('logbox');
+const logBox = document.getElementById('logs');
 
 function log(entry, isError) {
     if (isError) {
@@ -19,6 +19,7 @@ function log(entry, isError) {
         newEntry.classList.add('error');
     }
     logBox.appendChild(newEntry);
+    logBox.scrollTop = logBox.scrollHeight;
 }
 
 function logError(entry) {
@@ -73,10 +74,11 @@ function updateMessages(messages) {
     messageBox.innerHTML = '';
     for (const message of messages) {
         const newMessage = document.createElement('div');
-
+        newMessage.classList.add('message');
         newMessage.innerText = message.name + ': ' + message.content;
         messageBox.appendChild(newMessage);
     }
+    messageBox.scrollTop = messageBox.scrollHeight;
 }
 
 getMessages();

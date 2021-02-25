@@ -6,27 +6,37 @@ body {
     margin: 100px auto;
 }
 
-#chatbox {
+.boxes {
     background-color: rgb(209, 209, 209);
     border-radius: 10px;
     padding: 1rem;
-
+    max-height: 650px;
 }
 
-/* #chatbox input { */
-/* } */
+#chatbox #messages {
+    overflow-y: scroll;
+    max-height: 83%;
+}
+#chatbox .message {
+    padding: 0.5rem;
+    border: 1px solid rgb(100, 100, 100);
+    border-radius: 4px;
+    background-color: rgb(226, 226, 226);
+    margin-bottom: 5px;
+}
 
 #logbox {
-    background-color: rgb(196, 196, 196);
-    font-family: monospace;
-    padding: 1rem;
-    border-radius: 10px;
-
+    padding-right: 0;
+}
+#logs {
+    overflow-y: scroll;
+    max-height: 90%;
 }
 
 #logbox p {
     margin: 0;
-    font-size: 0.6rem;
+    font-family: monospace;
+    font-size: 0.7rem;
 }
 
 .error {

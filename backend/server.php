@@ -66,7 +66,7 @@ if ($action === 'getMessages') {
     $messages = array();
 
     try {
-        $stmt = $conn->query('SELECT * FROM messages ORDER BY id DESC LIMIT 14');
+        $stmt = $conn->query('SELECT * FROM messages ORDER BY id DESC LIMIT 10');
 
         while ($row = $stmt->fetch()) {
             array_unshift($messages, $row);
