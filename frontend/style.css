@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(29, 29, 95);
+}
+
+.container {
+    margin: 100px auto;
+}
+
+#chatbox {
+    background-color: rgb(209, 209, 209);
+    border-radius: 10px;
+    padding: 1rem;
+
+}
+
+#logbox {
+    background-color: rgb(196, 196, 196);
+    font-family: monospace;
+    padding: 1rem;
+    border-radius: 10px;
+
+}
+
+#logbox p {
+    margin: 0;
+}
+
+.error {
+    color: rgb(170, 0, 0);
+}
