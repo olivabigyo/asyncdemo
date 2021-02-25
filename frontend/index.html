@@ -16,8 +16,16 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 offset-lg-3" id="chatbox">
+            <div class="col-lg-5 offset-lg-3" id="chatbox">
                 <h1>Let's chat</h1>
+                <div id="messages" class="mb-3"></div>
+                <form id="form" action="">
+                    <div class="form-inline-group">
+                        <input type="text" id="name" value="Anon" size="4">
+                        <input type="text" id="message" placeholder="type here">
+                        <button type="submit" ><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
             </div>
             <div class="col-lg-3 offset-1" id="logbox">
                 <h2>Logs</h2>

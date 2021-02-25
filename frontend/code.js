@@ -31,22 +31,19 @@ function logError(entry) {
 // logError('Something went wrong');
 
 // ------------------------------------------------------------------
-// Get Messages
-async function getMessages() {
-    log('Downloading messages...');
+// Server requests
+
+async function serverRequest(action, payload) {
+    log(`Requesting ${action} from server...`);
 
     try {
         const request = await fetch(apiEndpoint, {
             method: 'POST',
             headers: {
-                'Content-Type':'application/json'
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({op: 'getMessages'})
+            body: JSON.stringify({ action, payload })
         });
-        if (!request.ok) {
-            logError('Fetch failed');
-            return;
-        }
         if (request.status != 200) {
             logError('Fetch bad status: ' + request.status);
             return;
@@ -57,23 +54,67 @@ async function getMessages() {
             logError('Server returned error: ' + data.error);
             return;
         }
-        log('Messages downloaded.');
 
-        updateMessages(data.messages);
-
+        log(`Successful ${action} request.`);
+        return data;
     } catch (err) {
         console.log(err);
         logError('Exeption: ' + err);
     }
 }
 
+async function getMessages() {
+    const data = await serverRequest('getMessages');
+    updateMessages(data.messages);
+}
+
 function updateMessages(messages) {
+    const messageBox = document.getElementById('messages');
+    messageBox.innerHTML = '';
     for (const message of messages) {
         const newMessage = document.createElement('div');
-        newMessage.innerText = message.content;
-        const chatBox = document.getElementById('chatbox');
-        chatBox.appendChild(newMessage);
+
+        newMessage.innerText = message.name + ': ' + message.content;
+        messageBox.appendChild(newMessage);
     }
 }
 
 getMessages();
+setInterval(getMessages, 2000);
+
+// ------------------------------------------------------------------
+
+function saveName() {
+    const name = document.getElementById('name');
+    localStorage.setItem('letsChatName', name.value);
+}
+
+document.getElementById('name').addEventListener('blur', saveName);
+
+function restoreName() {
+    const name = localStorage.getItem('letsChatName');
+    if (!name) return;
+    const nameElem = document.getElementById('name');
+    nameElem.value = name;
+}
+// TODO: move to init()
+restoreName();
+
+// TODO: move to init()
+document.getElementById('message').focus();
+
+async function addMessage(event) {
+    event.preventDefault();
+    saveName();
+    const name = document.getElementById('name');
+    const message = document.getElementById('message');
+    log(`Sending new message from ${name.value}: ${message.value}`);
+    const reply = await serverRequest('addMessage', {name: name.value, content: message.value});
+    if (reply) {
+        log('Message successfully sent.');
+        message.value = '';
+        getMessages();
+    }
+}
+
+document.getElementById('form').addEventListener('submit', addMessage);
