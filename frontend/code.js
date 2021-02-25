@@ -1,6 +1,7 @@
 'use strict';
 
-const apiEndpoint = 'http://localhost/asyncdemo/backend/server.php';
+// const apiEndpoint = 'http://localhost/asyncdemo/backend/server.php';
+const apiEndpoint = 'https://amongus.olivabigyo.site/asyncdemo.php';
 
 // ------------------------------------------------------------------
 // Logging
