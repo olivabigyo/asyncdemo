@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(29, 29, 95);
+    background-color: #4d244e;
 }
 
 .container {
@@ -7,30 +7,60 @@ body {
 }
 
 .boxes {
-    background-color: rgb(209, 209, 209);
+    background-color: #6d335c;
     border-radius: 10px;
     padding: 1rem;
     max-height: 650px;
 }
 
+h2 {
+    color: #d37b79;
+    margin-bottom: 1rem;
+}
 #chatbox #messages {
     overflow-y: scroll;
     max-height: 83%;
 }
 #chatbox .message {
     padding: 0.5rem;
-    border: 1px solid rgb(100, 100, 100);
+    margin-right: 2px;
     border-radius: 4px;
-    background-color: rgb(226, 226, 226);
+    background-color: rgb(240, 240, 240);
     margin-bottom: 5px;
 }
 
-#logbox {
-    padding-right: 0;
+#chatbox input {
+    background-color: #ae5f75;
+    padding: 0.7rem;
+    color: white;
+    border: none;
 }
+
+#chatbox input:focus {
+    border: 1px solid #f6bd66 ;
+    outline: none;
+}
+
+#chatbox ::placeholder {
+    color: white;
+}
+
+#chatbox .mybtn {
+    padding: 0.7rem 1.2rem;
+    background-color: #f6bd66;
+    color: #6d335c;
+    border: none;
+}
+
+#chatbox .mybtn:hover {
+    background-color: #eea942;
+}
+
 #logs {
     overflow-y: scroll;
     max-height: 90%;
+    background-color: rgb(240, 240, 240);
+    padding: 0.5rem;
 }
 
 #logbox p {

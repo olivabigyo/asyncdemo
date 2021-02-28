@@ -37,7 +37,7 @@ function log(entry, isError) {
     //     console.log(entry);
     // }
 
-    // create p for entry
+    // create p for new entry
     const newEntry = document.createElement('p');
     // populate with entry content
     newEntry.innerText = entry;
@@ -47,7 +47,7 @@ function log(entry, isError) {
     }
     // place it
     logBox.appendChild(newEntry);
-    // We want to see the last logs, scroll down to that
+    // We want to see the last logs, scroll down
     logBox.scrollTop = logBox.scrollHeight;
 }
 
@@ -123,29 +123,6 @@ setInterval(getMessages, 5000);
 
 
 // ------------------------------------------------------------------
-// Save name in localStorage
-// -------------------------
-
-function saveName() {
-    const name = document.getElementById('name');
-    localStorage.setItem('letsChatName', name.value);
-}
-
-document.getElementById('name').addEventListener('blur', saveName);
-
-function restoreName() {
-    const name = localStorage.getItem('letsChatName');
-    if (!name) return;
-    const nameElem = document.getElementById('name');
-    nameElem.value = name;
-}
-// TODO: move to init()
-restoreName();
-
-// TODO: move to init()
-document.getElementById('message').focus();
-
-// ------------------------------------------------------------------
 // Submit the message
 // ----------------------
 
@@ -168,5 +145,28 @@ async function addMessage(event) {
         getMessages();
     }
 }
+
+// ------------------------------------------------------------------
+// Save name in localStorage
+// -------------------------
+
+function saveName() {
+    const name = document.getElementById('name');
+    localStorage.setItem('letsChatName', name.value);
+}
+
+document.getElementById('name').addEventListener('blur', saveName);
+
+function restoreName() {
+    const name = localStorage.getItem('letsChatName');
+    if (!name) return;
+    const nameElem = document.getElementById('name');
+    nameElem.value = name;
+}
+// TODO: move to init()
+restoreName();
+
+// TODO: move to init()
+document.getElementById('message').focus();
 
 document.getElementById('form').addEventListener('submit', addMessage);
