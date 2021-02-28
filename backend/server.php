@@ -80,8 +80,6 @@ if ($action === 'getMessages') {
 }
 
 if ($action === 'addMessage') {
-    $messages = array();
-
     try {
         $stmt = $conn->prepare('INSERT INTO messages (name, content) VALUES (:name, :content)');
         $stmt->execute((array) $request->payload);
@@ -89,6 +87,6 @@ if ($action === 'addMessage') {
         exitWithError("INSERT failed: " . $e->getMessage());
     }
 
-    echo json_encode(array('ok' => true, 'messages' => $messages));
+    echo json_encode(array('ok' => true));
     exit;
 }
