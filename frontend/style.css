@@ -19,7 +19,7 @@ h2 {
 }
 #chatbox #messages {
     overflow-y: scroll;
-    max-height: 83%;
+    max-height: 80%;
 }
 #chatbox .message {
     padding: 0.5rem;
@@ -32,6 +32,7 @@ h2 {
 #chatbox input {
     background-color: #ae5f75;
     padding: 0.6rem;
+    margin-bottom: 2px;
     color: white;
     border: none;
 }
@@ -46,7 +47,7 @@ h2 {
 }
 
 #chatbox .mybtn {
-    padding: 0.6rem 1rem;
+    padding: 0.6rem 0.8rem;
     background-color: #f6bd66;
     color: #6d335c;
     border: none;
