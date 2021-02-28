@@ -31,7 +31,7 @@ h2 {
 
 #chatbox input {
     background-color: #ae5f75;
-    padding: 0.7rem;
+    padding: 0.6rem;
     color: white;
     border: none;
 }
@@ -46,7 +46,7 @@ h2 {
 }
 
 #chatbox .mybtn {
-    padding: 0.7rem 1.2rem;
+    padding: 0.6rem 1rem;
     background-color: #f6bd66;
     color: #6d335c;
     border: none;
