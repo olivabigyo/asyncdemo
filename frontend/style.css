@@ -1,5 +1,24 @@
+@charset "UTF-8";
+:root {
+    --body-bg-color: #4d244e;
+    --box-bg-color: #6d335c;
+    --h2-color: #d37b79;
+    --button-bg-color: #f6bd66;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #4d244e;
+    background-color: var(--body-bg-color);
+    font-family: var(--font-family-sans-serif);
 }
 
 .container {
@@ -7,30 +26,32 @@ body {
 }
 
 .boxes {
-    background-color: #6d335c;
+    background-color: var(--box-bg-color);
     border-radius: 10px;
     padding: 1rem;
     max-height: 650px;
 }
 
 h2 {
-    color: #d37b79;
+    color: var(--h2-color);
     margin-bottom: 1rem;
 }
+
 #chatbox #messages {
     overflow-y: scroll;
     max-height: 80%;
 }
+
 #chatbox .message {
     padding: 0.5rem;
     margin-right: 2px;
     border-radius: 4px;
-    background-color: rgb(240, 240, 240);
+    background-color: #f0f0f0;
     margin-bottom: 5px;
 }
 
 #chatbox input {
-    background-color: #ae5f75;
+    background-color: var(--h2-color);
     padding: 0.6rem;
     margin-bottom: 2px;
     color: white;
@@ -38,7 +59,7 @@ h2 {
 }
 
 #chatbox input:focus {
-    border: 1px solid #f6bd66 ;
+    border: 1px solid var(--button-bg-color);
     outline: none;
 }
 
@@ -48,8 +69,8 @@ h2 {
 
 #chatbox .mybtn {
     padding: 0.6rem 0.8rem;
-    background-color: #f6bd66;
-    color: #6d335c;
+    background-color: var(--button-bg-color);
+    color: var(--body-bg-color);
     border: none;
 }
 
@@ -60,7 +81,7 @@ h2 {
 #logs {
     overflow-y: scroll;
     max-height: 90%;
-    background-color: rgb(240, 240, 240);
+    background-color: #f0f0f0;
     padding: 0.5rem;
 }
 
