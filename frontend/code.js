@@ -1,6 +1,6 @@
 'use strict';
 
-// This is the client site javascript, which the user gets from the frontend server
+// This is the client site javascript, which the browser gets from the frontend server
 // in our case the github.io server
 
 // The user load the site olivabigyo.github.io/asyncdemo/frontend
@@ -16,7 +16,7 @@
 // This .js file will make requests to the backend server
 
 // Server Endpoint
-const apiEndpoint = 'http://amongus.olivabigyo.site/asyncdemo.php';
+const apiEndpoint = 'https://amongus.olivabigyo.site/asyncdemo.php';
 // Local Endpoint while developing
 // const apiEndpoint = 'http://localhost/asyncdemo/backend/server.php';
 
@@ -45,7 +45,7 @@ function log(entry, isError) {
     if (isError) {
         newEntry.classList.add('error');
     }
-    // place it
+    // place it in the DOM
     logBox.appendChild(newEntry);
     // We want to see the last logs, scroll down
     logBox.scrollTop = logBox.scrollHeight;
@@ -100,6 +100,7 @@ async function serverRequest(action, payload) {
 // Update chat messages
 // --------------------
 
+// fetch messages from the server then repopulate the site
 async function getMessages() {
     const data = await serverRequest('getMessages');
     updateMessages(data.messages);
@@ -107,11 +108,15 @@ async function getMessages() {
 
 function updateMessages(messages) {
     const messageBox = document.getElementById('messages');
+    // empty the box
     messageBox.innerHTML = '';
     for (const message of messages) {
+        // creat new divs
         const newMessage = document.createElement('div');
         newMessage.classList.add('message');
+        // fill up with messages
         newMessage.innerText = message.name + ': ' + message.content;
+        // place it in the DOM
         messageBox.appendChild(newMessage);
     }
     // We have a fix-height box for the messages and
@@ -132,7 +137,7 @@ async function addMessage(event) {
     // async function, we don't want to reload the site
     event.preventDefault();
     // save name in localstorage
-    // yes, this is a tiny app without login etc.
+    // yes, this is a tiny app without login for now
     saveName();
     const name = document.getElementById('name');
     const message = document.getElementById('message');
