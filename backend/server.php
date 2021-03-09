@@ -23,7 +23,7 @@
 
 
 // These are CORS Headers
-// TODO: What is CORS?
+// TODO: What is CORS? https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 
 // TODO: only allow olivabigyo.github.io
 //header('Access-Control-Allow-Origin: https://olivabigyo.github.io');
@@ -39,7 +39,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json');
 
 
-// First round, if the method is OPTIONS:
+// First round, preflight: the method is OPTIONS
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method === 'OPTIONS') {
     // We have set all the necessary CORS headers, just return.

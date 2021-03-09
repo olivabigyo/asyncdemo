@@ -31,11 +31,11 @@ const logBox = document.getElementById('logs');
 function log(entry, isError) {
 
     // Testing...
-    // if (isError) {
-    //     console.error(entry);
-    // } else {
-    //     console.log(entry);
-    // }
+    if (isError) {
+        console.error(entry);
+    } else {
+        console.log(entry);
+    }
 
     // create p for new entry
     const newEntry = document.createElement('p');
@@ -56,17 +56,17 @@ function logError(entry) {
 }
 
 // Testing...
-// log('Something is happening...');
+log('Something is happening...');
 // log('Done.');
-// log('Something went wrong', true);
+log('Something went wrong', true);
 // logError('Something went wrong');
 
 // ------------------------------------------------------------------
 // Server requests
 // ---------------
 
-async function serverRequest(action, payload) {
-    log(`Requesting ${action} from server...`);
+async function serverRequest(operation, payload) {
+    log(`Requesting ${operation} from server...`);
 
     try {
         const request = await fetch(apiEndpoint, {
@@ -74,7 +74,7 @@ async function serverRequest(action, payload) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ action, payload })
+            body: JSON.stringify({ operation, payload })
         });
         if (request.status != 200) {
             logError('Fetch bad status: ' + request.status);
@@ -87,7 +87,7 @@ async function serverRequest(action, payload) {
             return;
         }
 
-        log(`Successful ${action} request.`);
+        log(`Successful ${operation} request.`);
         return data;
     } catch (err) {
         // Error handling
@@ -111,7 +111,7 @@ function updateMessages(messages) {
     // empty the box
     messageBox.innerHTML = '';
     for (const message of messages) {
-        // creat new divs
+        // create new divs
         const newMessage = document.createElement('div');
         newMessage.classList.add('message');
         // fill up with messages
@@ -154,6 +154,12 @@ async function addMessage(event) {
 }
 
 // ------------------------------------------------------------------
+// Event Listener
+// -------------------------
+
+document.getElementById('form').addEventListener('submit', addMessage);
+
+// ------------------------------------------------------------------
 // Save name in localStorage
 // -------------------------
 
@@ -174,9 +180,3 @@ function restoreName() {
 restoreName();
 // TODO: move to init()
 document.getElementById('message').focus();
-
-// ------------------------------------------------------------------
-// Event Listener
-// -------------------------
-
-document.getElementById('form').addEventListener('submit', addMessage);
