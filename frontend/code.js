@@ -65,8 +65,8 @@ log('Something went wrong', true);
 // Server requests
 // ---------------
 
-async function serverRequest(operation, payload) {
-    log(`Requesting ${operation} from server...`);
+async function serverRequest(action, payload) {
+    log(`Requesting ${action} from server...`);
 
     try {
         const request = await fetch(apiEndpoint, {
@@ -74,7 +74,7 @@ async function serverRequest(operation, payload) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ operation, payload })
+            body: JSON.stringify({ action, payload })
         });
         if (request.status != 200) {
             logError('Fetch bad status: ' + request.status);
@@ -87,7 +87,7 @@ async function serverRequest(operation, payload) {
             return;
         }
 
-        log(`Successful ${operation} request.`);
+        log(`Successful ${action} request.`);
         return data;
     } catch (err) {
         // Error handling

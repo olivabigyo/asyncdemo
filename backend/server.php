@@ -6,7 +6,7 @@
 // - setup pdo
 // - actual request handling and creating response
 
-// In a bigger project these would be in diffenrent files
+// In a bigger project these would be in different files
 
 // ---------------------------------------------------------------------------
 // 1. Part - Headers
@@ -120,7 +120,7 @@ try {
 // yay! we actually do something now
 // Up to this point it was just exits with a header :)
 
-// Our POST request has an action parameter as geMessager or addMessages
+// Our POST request has an action parameter as getMessages or addMessages
 
 // handling the getMessages request
 if ($action === 'getMessages') {
@@ -153,7 +153,7 @@ if ($action === 'getMessages') {
 }
 // this is not a function it don't returns
 // it writes output by echoing the fetched data after the headers
-// exit is optional, because we have only an other if statement after this file in which we won't enter
+// exit is optional, because we have only an other if statement after this, in which we won't enter
 // but it is better to exiting now
 
 
