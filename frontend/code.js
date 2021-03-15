@@ -58,7 +58,7 @@ function logError(entry) {
 // Testing...
 log('Something is happening...');
 // log('Done.');
-log('Something went wrong', true);
+// log('Something went wrong', true);
 // logError('Something went wrong');
 
 // ------------------------------------------------------------------
